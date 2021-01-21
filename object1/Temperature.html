@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+</head>
+<body>
+
+<script>
+    function TransTemp(celcius) {
+        this.celcius = celcius;
+        this.getCelcius =function (){
+            return celcius;
+        }
+        this.getFah = function () {
+            return celcius * 1.8 + 32;
+        }
+        this.getKelvin = function () {
+            return celcius + 273.15;
+        }
+    }
+    let num = +prompt('nhập giá trị độ C');
+    if( num > -273){
+        let transtemp = new TransTemp(num);
+        let celcius = transtemp.getCelcius();
+        let fahrenheit = transtemp.getFah();
+        let kelvin = transtemp.getKelvin();
+        alert( 'Kết quả ' + celcius + ' độ C =' + fahrenheit+ ' độ F' + ' =' + kelvin + ' độ K' );
+    }
+    else{
+        alert('Nhập giá trị độ C lớn hơn -273 độ');
+    }
+</script>
+</body>
+</html>

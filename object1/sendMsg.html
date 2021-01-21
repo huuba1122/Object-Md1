@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <fieldset style="width: 300px">
+        <legend>tele1</legend>
+        <input type="text" oninput="tele1.writeMsg(this.value)" id="inputtele1">
+        <button type="button" onclick="sendMsg(tele1,tele2)">sent</button>
+        <br>
+        hộp thư đi <br>
+        <textarea name="" id="outboxtele1" ></textarea><br>
+        hộp thư đến <br>
+        <textarea name="" id="inboxtele1" ></textarea>
+    </fieldset>
+    <fieldset style="width: 300px">
+        <legend>tele2</legend>
+        <input type="text" oninput="tele2.writeMsg(this.value)" id="inputtele2">
+        <button type="button" onclick="sendMsg(tele2,tele1)">sent</button>
+        <br>
+        hộp thư đi <br>
+        <textarea name="" id="outboxtele2" ></textarea><br>
+        hộp thư đến <br>
+        <textarea name="" id="inboxtele2" ></textarea>
+    </fieldset>
+
+
+</body>
+<script>
+    // function Mobile (name) {
+    //     this.name = name;
+    //     this.msg = "";
+    //     this.inbox = [];
+    //     this.outbox = [];
+    //     this.writeMsg = function (value){
+    //         this.msg = value;
+    //     };
+    //     this.sendMess = function (tele) {
+    //         this.outbox.push(this.msg);
+    //         tele.reveiceMsg(this.msg, this.name);
+    //     };
+    //     this.reveiceMsg = function (msg, name){
+    //         this.inbox.push(msg);
+    //         alert('đã nhận 1 tin nhắn từ: '+name);
+    //     }
+    // }
+    // let tele1 = new Mobile('tele1');
+    // let tele2 = new Mobile('tele2');
+    // display();
+    // function sendMsg(tele1,tele2) {
+    //     tele1.sendMess(tele2);
+    //     display();
+    // }
+    // function  display() {
+    //     document.getElementById('inboxtele1').innerText = tele1.inbox;
+    //     document.getElementById('inboxtele2').innerText = tele2.inbox;
+    //     document.getElementById('outboxtele1').innerText = tele1.outbox;
+    //     document.getElementById('outboxtele2').innerText = tele2.outbox;
+    //     document.getElementById('inputtele1').value ='';
+    //     document.getElementById('inputtele2').value ='';
+    // }
+
+    function Tele(name) {
+        this.name = name;
+        this.msg = "";
+        this.inbox = [];
+        this.outbox = [];
+        this.writeMsg = function (value){
+            this.msg = value;
+        };
+        this.senMess = function (tele){
+            this.outbox.push(this.msg);
+            tele.reveiceMsg(this.msg, this.name);
+        };
+        this.reveiceMsg = function (msg, name){
+            this.inbox.push(msg);
+            alert('bạn nhận được 1 tin nhắn từ: ' +name);
+        }
+    }
+    let tele1 = new Tele('tele1');
+    let tele2 = new Tele('tele2');
+    display();
+    function sendMsg(name1, name2){
+        name1.senMess(name2);
+        display();
+    }
+    function display() {
+        document.getElementById('inboxtele1').innerText = tele1.inbox;
+        document.getElementById('inboxtele2').innerText = tele2.inbox;
+        document.getElementById('outboxtele1').innerText = tele1.outbox;
+        document.getElementById('outboxtele2').innerText = tele2.outbox;
+        document.getElementById('inputtele1').value = '';
+        document.getElementById('inputtele2').value = '';
+    }
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+
+<script>
+    function Rectangle(length, height) {
+        this.length = length;
+        this.height = height;
+        this.getPerimeter = function (){
+            return length*2 + 2* height;
+        }
+        this.getArea = function (){
+            return length * height;
+        }
+    }
+
+    function creatRectang() {
+        var ctx = document.getElementById('myCanvas').getContext('2d');
+        ctx.fillStyle = "#090909";
+        ctx.rect(50, 50, rec.length, rec.height);
+        ctx.fill();
+
+    }
+    var length = Math.floor(Math.random()*1000);
+    var height = Math.floor(Math.random()*600);
+    var rec = new Rectangle( length, height );
+    var perimeter = rec.getPerimeter();
+    var area = rec.getArea();
+    creatRectang();
+    document.write('chu vi : '+perimeter+ '; diện tích: ' +area);
+
+</script>
+</body>
+</html>
